@@ -53,10 +53,11 @@ function checkout() {
 
         const name = document.getElementById('name').value;
         const address = document.getElementById('address').value;
+        const phone = document.getElementById('phone').value; // Получаем номер телефона
 
         // Здесь можно добавить код для отправки данных на сервер
 
-        alert(`Заказ оформлен на имя: ${name}, адрес: ${address}.`);
+        alert(`Заказ оформлен на имя: ${name}, адрес: ${address}, телефон: ${phone}.`);
         
         // Очистка корзины после оформления заказа
         cart = [];
@@ -91,3 +92,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+updateCartDisplay();

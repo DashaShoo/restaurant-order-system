@@ -129,17 +129,20 @@
             <div class="cart__items">
                 <!-- Элементы корзины будут добавлены динамически через JavaScript -->
             </div>
-            <button class="button " id="checkout">Оформить заказ</button>
+            <button class="button checkout-button" id="checkout">Оформить заказ</button>
         </section>
 
         <section class="order" id="order">
             <h2 class="title__heading">Оформление заказа</h2>
             <form class="order__form" id="checkout-form">
-                <label for="name">Имя:</label>
-                <input class="order__input_name" type="text" id="name" placeholder="Имя" required>
+                <label class="order__label" for="name">Имя:</label>
+                <input class="order__input order__input_name" type="text" id="name" placeholder="Иван" required>
 
-                <label for="address">Адрес:</label>
-                <input class="order__input_adress" type="text" id="address" placeholder="Адрес" required>
+                <label class="order__label" for="address">Адрес:</label>
+                <input class="order__input order__input_adress" type="text" id="address" placeholder="ул. Пушкина д. 20 кв. 15" required>
+
+                <label class="order__label" for="phone">Номер телефона:</label>
+                <input class="order__input order__input_phone" type="tel" id="phone" required pattern="[0-9]{11}" placeholder="89991112233" >
 
                 <button class="button order__submit-button" type="submit">Подтвердить заказ</button>
             </form>
