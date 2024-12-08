@@ -1,0 +1,6 @@
+# Используем официальный образ phpMyAdmin
+FROM phpmyadmin/phpmyadmin:latest
+
+# Устанавливаем переменные окружения для подключения к MySQL
+ENV PMA_HOST=db
+ENV MYSQL_ROOT_PASSWORD=rootpassword

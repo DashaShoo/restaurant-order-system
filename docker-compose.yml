@@ -1,0 +1,44 @@
+
+services:
+  db:
+      build: ./db 
+      container_name: db 
+      environment:
+          MYSQL_ROOT_PASSWORD: rootpassword 
+          MYSQL_DATABASE: restaurant 
+      ports:
+          - "3306:3306"
+
+  backend:
+      build: ./backend 
+      container_name: backend 
+      depends_on:
+          - db 
+      environment:
+          DB_HOST: db 
+          DB_USER: root 
+          DB_PASSWORD: rootpassword 
+          DB_NAME: restaurant 
+      ports:
+          - "5000:5000"
+
+  frontend:
+      build: ./frontend 
+      container_name: frontend 
+      ports:
+          - "80:80"
+
+  nginx:
+      build: ./nginx 
+      container_name: nginx 
+      depends_on:
+          - frontend 
+          - backend 
+      ports:
+          - "8082:80" 
+
+  phpmyadmin:
+      build: ./phpmyadmin 
+      container_name: phpmyadmin 
+      ports:
+          - "8081:80" # Доступ к phpMyAdmin по адресу http://localhost:8081

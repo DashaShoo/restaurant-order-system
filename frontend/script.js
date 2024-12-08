@@ -55,15 +55,31 @@ function checkout() {
         const address = document.getElementById('address').value;
         const phone = document.getElementById('phone').value; // Получаем номер телефона
 
-        // Здесь можно добавить код для отправки данных на сервер
+        const orderData = {
+            name: name,
+            address: address,
+            phone: phone,
+            items: cart // Передаем содержимое корзины
+        };
 
-        alert(`Заказ оформлен на имя: ${name}, адрес: ${address}, телефон: ${phone}.`);
-        
-        // Очистка корзины после оформления заказа
-        cart = [];
-        updateCartDisplay();
-        form.reset();
-        orderSection.style.display = 'none'; // Скрываем форму после оформления заказа
+        fetch('http://localhost:5000/api/order', { // URL вашего бэкенда
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message); // Уведомление об успешном оформлении заказа
+            
+            // Очистка корзины после оформления заказа
+            cart = [];
+            updateCartDisplay();
+            form.reset();
+            orderSection.style.display = 'none'; // Скрываем форму после оформления заказа
+        })
+        .catch(error => console.error('Ошибка при оформлении заказа:', error));
     };
 }
 
@@ -93,4 +109,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Обновление отображения корзины при загрузке страницы
 updateCartDisplay();

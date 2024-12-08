@@ -1,0 +1,11 @@
+# Используем официальный образ Nginx
+FROM nginx:alpine
+
+# Копируем HTML, CSS и JS файлы в директорию Nginx
+COPY index.html /usr/share/nginx/html/
+COPY styles.css /usr/share/nginx/html/
+COPY favicon.svg /usr/share/nginx/html/
+COPY fonts.css /usr/share/nginx/html/
+COPY script.js /usr/share/nginx/html/
+COPY ossem-rounded.woff2 /usr/share/nginx/html/
+COPY images /usr/share/nginx/html/images

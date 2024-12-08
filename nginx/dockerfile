@@ -1,0 +1,7 @@
+# Используем официальный образ Nginx
+FROM nginx:alpine
+
+# Копируем конфигурацию Nginx в контейнере 
+COPY nginx.conf /etc/nginx/nginx.conf 
+
+EXPOSE 80 
