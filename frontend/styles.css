@@ -12,7 +12,12 @@ body {
     color: white;
     margin: 0;
     padding: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
 }
+
+
 
 .header__navigation{
     display: flex;
@@ -35,6 +40,7 @@ body {
 .menu{
     position: relative;
     overflow: hidden; 
+    padding-top: 72px;
 }
 
 .menu__bacground{
@@ -83,9 +89,12 @@ body {
     border: rgba(0, 0, 0, 0.07) 1px solid
 }
 
+
+
 .menu__item-heading{
     margin: 10px auto;
-
+    padding: 0 10px;
+    text-align: center;
 }
 
 .menu__pic{
@@ -110,7 +119,6 @@ body {
 
 .add-to-cart{
     margin: 0 10px 10px 10px;
-
     justify-self: flex-end;
 }
 
@@ -208,4 +216,64 @@ body {
     margin: 0 20px 0 20px;
 }
 
+.notification {
+    position: fixed;
+    top: 92px;
+    right: 20px;
+    background-color: #febc4c; 
+    border: black 1px solid;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+}
 
+
+
+@media (min-width: 1280px){
+    .menu__item{
+        width: calc((100% - 60px)/4);
+    }
+}
+
+@media (max-width: 800px){
+    .menu__item{
+        width: calc((100% - 20px)/2);
+    }
+    .cart-and-order{
+        flex-direction: column;
+    }
+    .cart{
+        width: calc((100% - 60px));
+    }
+    .order{
+        width: calc((100% - 60px));
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 500px){
+    .menu__item{
+        width: 100%;
+    }
+    .menu__heading{
+        font-size: 40px;
+    }
+    .header__link{
+        font-size: 20px;
+    }
+    .title__heading{
+        font-size: 30px;
+    }
+    .cart-item__text{
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 400px){
+    .header__link{
+        font-size: 18px;
+    }
+
+}
