@@ -37,6 +37,11 @@ body {
     font-weight: bold;
     color: black;
 }
+
+.header__link:hover {
+    opacity: 0.7;
+}
+
 .menu{
     position: relative;
     overflow: hidden; 
@@ -221,7 +226,7 @@ body {
     top: 92px;
     right: 20px;
     background-color: #febc4c; 
-    border: black 1px solid;
+    border: white 3px solid;
     color: black;
     padding: 10px 15px;
     border-radius: 5px;

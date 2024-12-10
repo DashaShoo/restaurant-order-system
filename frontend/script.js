@@ -113,6 +113,8 @@ function updateCartDisplay() {
        return;
    }
 
+   let totalAmount = 0; // Переменная для подсчета финальной суммы
+
    cart.forEach(item => {
        const itemElement = document.createElement('div');
        itemElement.className = 'cart-item';
@@ -121,10 +123,18 @@ function updateCartDisplay() {
            <button class="button remove-from-cart" data-name="${item.name}">Удалить</button>
        `;
        cartItemsContainer.appendChild(itemElement);
+
+       totalAmount += item.price * item.quantity; // Считаем общую сумму заказа
    });
 
    document.getElementById('checkout').style.display = 'block'; // Показываем кнопку оформления заказа
+
+   const totalDisplay = document.createElement('div');
+   totalDisplay.innerHTML = `<strong>Итоговая сумма заказа: ${totalAmount} руб.</strong>`;
+   cartItemsContainer.appendChild(totalDisplay);
 }
+
+
 
 // Функция для уменьшения количества блюда в корзине
 function removeFromCart(dishName) {
@@ -148,7 +158,7 @@ function checkout() {
 
    const form = document.getElementById('checkout-form');
    form.onsubmit = function(event) {
-       event.preventDefault(); // Предотвращаем стандартное поведение формы
+       event.preventDefault(); // Убираем стандартное поведение формы
 
        const name = document.getElementById('name').value;
        const address = document.getElementById('address').value;
@@ -161,7 +171,7 @@ function checkout() {
            items: cart // Передаем содержимое корзины
        };
 
-       fetch('http://localhost:5000/api/order', { // URL вашего бэкенда
+       fetch('http://localhost:5000/api/order', { // URL бэкенда
            method: 'POST',
            headers: { 'Content-Type': 'application/json' },
            body: JSON.stringify(orderData)
